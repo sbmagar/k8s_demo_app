@@ -1,10 +1,19 @@
-class SquareRootCalculate:
-  def square_root(self, n):
-    return n ** 0.5
+from flask import Flask
+import random
 
-print("Enter a Number: ")
-num = int(input())
+ 
+app = Flask(__name__)
 
-obj1 = SquareRootCalculate()
-squareroot = obj1.square_root(num)
-print(f"The square root of {num} = {squareroot}")
+@app.route('/')
+def hello_world():
+    return 'Hello World'
+
+@app.route('/sqrt')
+def square_root():
+    num = random.randint(1, 1000)
+    return (f"The square root of {num} is {num ** 0.5}.")
+
+
+if __name__ == '__main__':
+    app.run()
+    
